@@ -10,6 +10,7 @@ import android.os.Bundle;
 import be.tarsos.dsp.AudioDispatcher;
 import be.tarsos.dsp.AudioEvent;
 import be.tarsos.dsp.AudioProcessor;
+import be.tarsos.dsp.ConstantQ;
 import be.tarsos.dsp.GainProcessor;
 import be.tarsos.dsp.WaveformSimilarityBasedOverlapAdd;
 import be.tarsos.dsp.io.android.AudioDispatcherFactory;
@@ -54,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
         double rate = 1.0;
         rateTransposer = new RateTransposer(rate);
         dispatcher = AudioDispatcherFactory.fromDefaultMicrophone(22050,1024,0);
-        wsola = new WaveformSimilarityBasedOverlapAdd(WaveformSimilarityBasedOverlapAdd.Parameters.musicDefaults(rate, 22050));
+        wsola = new WaveformSimilarityBasedOverlapAdd(WaveformSimilarityBasedOverlapAdd.Parameters.musicDefaults(rate, 2048));
 
         wsola.setDispatcher(dispatcher);
         dispatcher.addAudioProcessor(wsola);
